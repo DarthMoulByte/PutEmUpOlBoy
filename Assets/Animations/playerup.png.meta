@@ -1,0 +1,129 @@
+fileFormatVersion: 2
+guid: d6788b79b1d17eb429c89d9f2e138bd5
+timeCreated: 1485017504
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: playerup_0
+    21300002: playerup_1
+    21300004: playerup_2
+    21300006: playerup_3
+    21300008: playerup_4
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: playerup_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 728
+        width: 286
+        height: 296
+      alignment: 9
+      pivot: {x: 0.55744755, y: 0.0046256813}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: playerup_1
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 665
+        width: 169
+        height: 359
+      alignment: 9
+      pivot: {x: 0.5729139, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: playerup_2
+      rect:
+        serializedVersion: 2
+        x: 505
+        y: 657
+        width: 167
+        height: 367
+      alignment: 9
+      pivot: {x: 0.57378787, y: 0.007461423}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: playerup_3
+      rect:
+        serializedVersion: 2
+        x: 697
+        y: 659
+        width: 162
+        height: 365
+      alignment: 9
+      pivot: {x: 0.55916154, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: playerup_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 347
+        width: 175
+        height: 285
+      alignment: 9
+      pivot: {x: 0.5234714, y: 0.00000021415845}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
