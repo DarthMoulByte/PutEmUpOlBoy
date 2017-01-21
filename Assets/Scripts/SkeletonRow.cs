@@ -10,7 +10,7 @@ public class SkeletonRow : MonoBehaviour
 
 	public float cheerFactor;
 
-	private List<CrowdSkeleton> row;
+	[SerializeField] private List<CrowdSkeleton> row;
 
 	private CrowdSkeleton lastCheeringSkeleton;
 
@@ -63,7 +63,6 @@ public class SkeletonRow : MonoBehaviour
 
 	void Update()
 	{
-
 		if (cheerFactor > 1f)
 		{
 			teamSkeleton.Punch();
@@ -75,6 +74,12 @@ public class SkeletonRow : MonoBehaviour
 			cheerFactor = 0;
 		}
 
+		if (Input.GetKeyDown (KeyCode.N)) 
+		{
+			RandomizeCheerKeys ();
+		}
+
+
 		//foreach (var crowdSkeleton in row)
 		//{
 		//	if (crowdSkeleton.Cheer == null)
@@ -82,5 +87,27 @@ public class SkeletonRow : MonoBehaviour
 		//		
 		//	}
 		//}
+	}
+
+	public void RandomizeCheerKeys()
+	{
+		var keysLeft = row.Select (s => new {
+			s.key,
+			s.keyIcon,
+		}).ToList ();
+
+		List<CrowdSkeleton> skeletonsLeft = new List<CrowdSkeleton> ();
+		skeletonsLeft.AddRange (row);
+
+		for (var i = 0; i < row.Count; i++) 
+		{
+			int randomSkeletonIndex = UnityEngine.Random.Range (0, skeletonsLeft.Count);
+			int randomKeysIndex = UnityEngine.Random.Range (0, keysLeft.Count);
+
+			skeletonsLeft [randomSkeletonIndex].SetCheerKey (keysLeft [randomKeysIndex].key, keysLeft [randomKeysIndex].keyIcon);
+
+			skeletonsLeft.RemoveAt (randomSkeletonIndex);
+			keysLeft.RemoveAt (randomKeysIndex);
+		}
 	}
 }

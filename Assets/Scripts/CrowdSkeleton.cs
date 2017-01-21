@@ -1,10 +1,13 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class CrowdSkeleton : MonoBehaviour
 {
 	public KeyCode key;
+
+	public Sprite keyIcon;
 
 	private Vector3 startPosition;
 
@@ -15,6 +18,8 @@ public class CrowdSkeleton : MonoBehaviour
 	private SkeletonRow row;
 
 	private Animator animator;
+
+	private SpriteRenderer iconRenderer;
 
 	public enum SkeletonState
 	{
@@ -29,11 +34,13 @@ public class CrowdSkeleton : MonoBehaviour
 	{
 		animator = GetComponentInChildren<Animator>();
 		row = GetComponentInParent<SkeletonRow>();
+		iconRenderer = transform.FindChild("PlayerActor").FindChild("ButtonIcon").GetComponent<SpriteRenderer> ();
 
 		startPosition = transform.position;
 
 		animator.SetTrigger( "Idle" );
 		state = SkeletonState.Idle;
+		iconRenderer.sprite = keyIcon;
 	}
 
 	void Update()
@@ -55,5 +62,16 @@ public class CrowdSkeleton : MonoBehaviour
 
 			Debug.Log(name + " " + state);
 		}
+	}
+
+	public KeyCode GetCheerKey()
+	{
+		return key;
+	}
+
+	public void SetCheerKey(KeyCode newKey, Sprite newKeyIcon)
+	{
+		key = newKey;
+		iconRenderer.sprite = newKeyIcon;
 	}
 }
