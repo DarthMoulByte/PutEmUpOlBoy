@@ -27,6 +27,9 @@ public class FightingSkeleton : MonoBehaviour
 		hp = Game.MaxHP;
         animator = GetComponent<Animator>();
 		alive = true;
+
+		Game.Instance.NewRound += NewRound;
+		Game.Instance.CountDownComplete += CountDownComplete;
 	}
 
 	void Update()
@@ -92,6 +95,16 @@ public class FightingSkeleton : MonoBehaviour
 		animator.SetTrigger("Victory");
 		Audio.PlayAudioSource( Audio.Instance.winGame );
 
+	}
+
+	private void NewRound()
+	{
+		animator.SetTrigger("Victory");
+	}
+
+	private void CountDownComplete()
+	{
+		animator.SetTrigger("Idle");
 	}
 
 	public void Punch()

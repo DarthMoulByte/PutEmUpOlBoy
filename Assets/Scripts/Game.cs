@@ -36,6 +36,7 @@ public class Game : MonoBehaviour
 	public static float TimerMax = 15;
 
 	public Action NewRound;
+	public Action CountDownComplete;
 
 	private List<SkeletonRow> skeletonRows;
 
@@ -107,7 +108,7 @@ public class Game : MonoBehaviour
 	public void GameOver()
 	{
 		state = GameState.EndScreen;
-		ShowReplayScreen ();
+		_instance.StartCoroutine(ShowReplayScreen());
 	}
 
 	private void ShowStartScreen()
@@ -116,10 +117,11 @@ public class Game : MonoBehaviour
 		startScreenObject.SetActive(true);
 	}
 
-	private void ShowReplayScreen()
+	private IEnumerator ShowReplayScreen()
 	{
-		Audio.PlayAudioSource(Audio.Instance.mainMenu);
-		startScreenObject.SetActive(true);
+		yield return new WaitForSeconds(5f);
+		Audio.PlayAudioSource(Audio.Instance.winGame);
+		replayScreenObject.SetActive(true);
 	}
 
 	private void RestartGame()
@@ -208,7 +210,7 @@ public class Game : MonoBehaviour
 		countdownObjects.go.SetActive( false );
 
 		Audio.PlayAudioSource( Audio.Instance.ingameMusic , 2f );
-
+		_instance.CountDownComplete();
 
 		RestartTimer();
 
