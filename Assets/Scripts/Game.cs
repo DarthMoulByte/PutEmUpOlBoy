@@ -1,6 +1,8 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 public class Game : MonoBehaviour
 {
@@ -32,6 +34,8 @@ public class Game : MonoBehaviour
 	public static float TimerMax = 15;
 
 	public Action NewRound;
+
+	private List<SkeletonRow> skeletonRows;
 
 	[System.Serializable]
 	public class CountdownObjects
@@ -67,6 +71,7 @@ public class Game : MonoBehaviour
 	{
 		if (timer == null) timer = FindObjectOfType<Timer>();
 
+		skeletonRows = FindObjectsOfType<SkeletonRow> ().ToList();
 		state = GameState.StartScreen;
 		ShowStartScreen();
 	}
@@ -110,7 +115,7 @@ public class Game : MonoBehaviour
 
 	public float counterDelay = 0.3f;
 
-	public IEnumerator CountDown(float delayBeforeCountdown)
+	public IEnumerator CountDown(float delayBeforeCountdown, bool randomizeKeys = true)
 	{
 		yield return new WaitForSeconds( delayBeforeCountdown );
 
@@ -125,24 +130,52 @@ public class Game : MonoBehaviour
 
 		yield return new WaitForSeconds( counterDelay );
 
+		if (randomizeKeys) 
+		{
+			foreach (var row in skeletonRows) 
+			{
+				row.RandomizeCheerKeys ();
+			}
+		}
 		countdownObjects.three.SetActive( false );
 		countdownObjects.two.SetActive( true );
 		Audio.PlayAudioSource( Audio.Instance.two );
 
 		yield return new WaitForSeconds( counterDelay );
 
+		if (randomizeKeys) 
+		{
+			foreach (var row in skeletonRows) 
+			{
+				row.RandomizeCheerKeys ();
+			}
+		}
 		countdownObjects.two.SetActive( false );
 		countdownObjects.one.SetActive( true );
 		Audio.PlayAudioSource( Audio.Instance.one );
 
 		yield return new WaitForSeconds( counterDelay );
 
+		if (randomizeKeys) 
+		{
+			foreach (var row in skeletonRows) 
+			{
+				row.RandomizeCheerKeys ();
+			}
+		}
 		countdownObjects.one.SetActive( false );
 		countdownObjects.go.SetActive( true );
 		Audio.PlayAudioSource( Audio.Instance.go );
 
 		yield return new WaitForSeconds( counterDelay * 1.2f);
 
+		if (randomizeKeys) 
+		{
+			foreach (var row in skeletonRows) 
+			{
+				row.RandomizeCheerKeys ();
+			}
+		}
 		countdownObjects.go.SetActive( false );
 
 		RestartTimer();
