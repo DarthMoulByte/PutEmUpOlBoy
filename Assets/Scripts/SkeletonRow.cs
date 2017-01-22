@@ -23,15 +23,15 @@ public class SkeletonRow : MonoBehaviour
 
 		if (thisSkeleton == lastSkeleton + 1)
 		{
-			cheerFactor += Game.Instance.CheerUpAmount;
+			AddCheerFactor(skeleton);
 		}
 		else if (thisSkeleton == 0 && lastSkeleton == 3)
 		{
-			cheerFactor += Game.Instance.CheerUpAmount;
+			AddCheerFactor( skeleton );
 		}
 		else if(lastCheeringSkeleton == null)
 		{
-			cheerFactor += Game.Instance.CheerUpAmount;
+			AddCheerFactor(skeleton);
 		}
 		else
 		{
@@ -39,6 +39,12 @@ public class SkeletonRow : MonoBehaviour
 		}
 
 		lastCheeringSkeleton = skeleton;
+	}
+
+	private void AddCheerFactor(CrowdSkeleton skeleton)
+	{
+		cheerFactor += Game.Instance.CheerUpAmount;
+		skeleton.EmitParticles();
 	}
 
 	void Start()
@@ -57,14 +63,20 @@ public class SkeletonRow : MonoBehaviour
 
 	void Update()
 	{
+
 		if (cheerFactor > 1f)
 		{
 			teamSkeleton.Punch();
+
+			Audio.PlayAudioSource( Audio.Instance.cheerings, 0f, 0.1f);
+
 			cheerFactor = 0;
 		}
 		if (cheerFactor < -1f)
 		{
 			teamSkeleton.GuardDown();
+			Audio.PlayAudioSource( Audio.Instance.losings , 0f , 0.1f );
+
 			cheerFactor = 0;
 		}
 

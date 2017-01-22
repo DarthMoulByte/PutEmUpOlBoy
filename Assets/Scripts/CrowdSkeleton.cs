@@ -1,6 +1,8 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine.UI;
 
 public class CrowdSkeleton : MonoBehaviour
@@ -21,9 +23,9 @@ public class CrowdSkeleton : MonoBehaviour
 
 	private SpriteRenderer iconRenderer;
 
-	private AudioSource cheerAudio;
-
 	private ParticleSystem cheerSuccessfulParticleSystem;
+
+	public List<AudioSource> individualCheers; 
 
 	public enum SkeletonState
 	{
@@ -34,8 +36,15 @@ public class CrowdSkeleton : MonoBehaviour
 
 	public SkeletonState state = SkeletonState.Down;
 
+	public void EmitParticles()
+	{
+		cheerSuccessfulParticleSystem.Emit( 30 );
+	}
+
 	void Start()
 	{
+		individualCheers = GetComponentsInChildren<AudioSource>().ToList();
+
 		animator = GetComponentInChildren<Animator>();
 		cheerSuccessfulParticleSystem = GetComponentInChildren<ParticleSystem>();
 		row = GetComponentInParent<SkeletonRow>();
@@ -46,8 +55,6 @@ public class CrowdSkeleton : MonoBehaviour
 		animator.SetTrigger( "Idle" );
 		state = SkeletonState.Idle;
 		iconRenderer.sprite = keyIcon;
-
-		cheerAudio = Instantiate(Audio.Instance.skeletonCheer);
 	}
 
 	void Update()
@@ -64,13 +71,10 @@ public class CrowdSkeleton : MonoBehaviour
 			else if (state == SkeletonState.Down)
 			{
 				animator.SetTrigger( "Jump" );
-				Audio.PlayAudioSource(cheerAudio);
+				Audio.PlayAudioSource( individualCheers , 0f, 0.1f);
 				state = SkeletonState.Idle;
-
 				row.Cheer( this );
 			}
-
-			Debug.Log(name + " " + state);
 		}
 	}
 

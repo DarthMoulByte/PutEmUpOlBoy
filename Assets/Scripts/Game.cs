@@ -104,6 +104,8 @@ public class Game : MonoBehaviour
 		startScreenObject.SetActive(false);
 		StartCountDown(0.5f, false);
 		Audio.StopAudioSource( Audio.Instance.mainMenu, 3f);
+
+		Audio.PlayAudioSource(Audio.Instance.ingameMusic, 3f);
 	}
 
 	private static void StartCountDown(float delayBeforeCountdown = 0f, bool randomizeKeys = true)
@@ -113,11 +115,14 @@ public class Game : MonoBehaviour
 		_instance.NewRound();
 	}
 
-	public float counterDelay = 0.3f;
+	public float counterDelay = 0.5f;
 
 	public IEnumerator CountDown(float delayBeforeCountdown, bool randomizeKeys = true)
 	{
+		Audio.StopAudioSource(Audio.Instance.ingameMusic, 2f);
 		yield return new WaitForSeconds( delayBeforeCountdown );
+
+		Audio.PlayAudioSource( Audio.Instance.countdown );
 
 		countdownObjects.three.SetActive(false);
 		countdownObjects.two.SetActive(false);
@@ -126,7 +131,6 @@ public class Game : MonoBehaviour
 
 		countdownObjects.three.SetActive( true );
 
-		Audio.PlayAudioSource(Audio.Instance.three);
 
 		yield return new WaitForSeconds( counterDelay );
 
@@ -139,7 +143,6 @@ public class Game : MonoBehaviour
 		}
 		countdownObjects.three.SetActive( false );
 		countdownObjects.two.SetActive( true );
-		Audio.PlayAudioSource( Audio.Instance.two );
 
 		yield return new WaitForSeconds( counterDelay );
 
@@ -152,7 +155,6 @@ public class Game : MonoBehaviour
 		}
 		countdownObjects.two.SetActive( false );
 		countdownObjects.one.SetActive( true );
-		Audio.PlayAudioSource( Audio.Instance.one );
 
 		yield return new WaitForSeconds( counterDelay );
 
@@ -165,7 +167,6 @@ public class Game : MonoBehaviour
 		}
 		countdownObjects.one.SetActive( false );
 		countdownObjects.go.SetActive( true );
-		Audio.PlayAudioSource( Audio.Instance.go );
 
 		yield return new WaitForSeconds( counterDelay * 1.2f);
 
@@ -177,6 +178,9 @@ public class Game : MonoBehaviour
 			}
 		}
 		countdownObjects.go.SetActive( false );
+
+		Audio.PlayAudioSource( Audio.Instance.ingameMusic , 2f );
+
 
 		RestartTimer();
 

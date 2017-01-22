@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class FightingSkeleton : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class FightingSkeleton : MonoBehaviour
 	public FightingSkeleton otherSkeleton;
 
 	private bool punchedOtherWhileGuardDown;
+
+	public List<AudioSource> punches;
 
 	void Start()
 	{
@@ -93,6 +96,7 @@ public class FightingSkeleton : MonoBehaviour
 	public void Punch()
 	{
 		if (guardDown) return;
+
 		Audio.PlayAudioSource( Audio.Instance.skeletonSmack );
 
 		punch = true;

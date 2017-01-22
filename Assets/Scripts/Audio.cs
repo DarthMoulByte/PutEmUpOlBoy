@@ -19,10 +19,7 @@ public class Audio : MonoBehaviour
 
 	private static Audio _instance;
 
-	public AudioSource three;
-	public AudioSource two;
-	public AudioSource one;
-	public AudioSource go;
+	public AudioSource countdown;
 	public AudioSource tickTock;
 	public AudioSource skeletonSmack;
 	public AudioSource skeletonDeath;
@@ -37,6 +34,9 @@ public class Audio : MonoBehaviour
 	public AudioSource winGame;
 	public AudioSource losegame;
 
+	public List<AudioSource> cheerings;
+	public List<AudioSource> losings;
+
 	public static void PlayAudioSource(AudioSource audioSource, float fadeInTime = 0f)
 	{
 		if (audioSource != null && !audioSource.isPlaying)
@@ -50,6 +50,16 @@ public class Audio : MonoBehaviour
 				_instance.StartCoroutine( _instance.FadeInAudioSource( audioSource , fadeInTime ) );
 			}
 		}
+	}
+
+	public static void PlayAudioSource(List<AudioSource> audioSourceList, float fadeInTime = 0f, float randomPitch = 0.1f)
+	{
+		var randomIndex = Random.Range(0, audioSourceList.Count);
+		var audioSource = audioSourceList[randomIndex];
+
+		audioSource.pitch += Random.Range(-randomPitch, randomPitch);
+
+		PlayAudioSource(audioSource, fadeInTime);
 	}
 
 	public static void StopAudioSource(AudioSource audioSource, float fadeOutTime = 0f)
