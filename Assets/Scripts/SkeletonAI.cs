@@ -1,15 +1,30 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SkeletonAI : MonoBehaviour {
+public class SkeletonAI : MonoBehaviour
+{
+	private FightingSkeleton skeleton;
 
-	// Use this for initialization
-	void Start () {
-	
+	private bool punchedAtEndOfGame;
+
+	void Start()
+	{
+		Game.Instance.NewRound += NewRound;
+
+		skeleton = GetComponent<FightingSkeleton>();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+
+	void Update()
+	{
+		if (Game.Instance.timer.timer <= 0.1f && !punchedAtEndOfGame)
+		{
+			skeleton.Punch();
+			punchedAtEndOfGame = true;
+		}
+	}
+
+	private void NewRound()
+	{
+		punchedAtEndOfGame = false;
 	}
 }
