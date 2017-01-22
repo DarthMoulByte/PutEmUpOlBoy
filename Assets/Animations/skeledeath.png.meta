@@ -1,0 +1,115 @@
+fileFormatVersion: 2
+guid: ff04ea41b88bb204fa34da251f62c444
+timeCreated: 1485045100
+licenseType: Pro
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: skeledeath_0
+    21300002: skeledeath_3
+    21300004: skeledeath_11
+    21300006: skeledeath_12
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: skeledeath_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 554
+        width: 198
+        height: 470
+      alignment: 9
+      pivot: {x: 0.26489064, y: 0.014565716}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: skeledeath_3
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 673
+        width: 273
+        height: 351
+      alignment: 9
+      pivot: {x: 1.0174754, y: 0.021466985}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: skeledeath_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 290
+        width: 262
+        height: 239
+      alignment: 9
+      pivot: {x: 0.9794987, y: 0.018761925}
+      border: {x: 0, y: 2, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: skeledeath_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 98
+        width: 263
+        height: 165
+      alignment: 9
+      pivot: {x: 0.98896027, y: -0.011976161}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
