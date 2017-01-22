@@ -91,8 +91,23 @@ public class Game : MonoBehaviour
 					HideStartScreen();
 				}
 			}
-
 		}
+		if (state == GameState.EndScreen)
+		{
+			if (Input.anyKeyDown)
+			{
+				if (!Input.GetMouseButton(0) && !Input.GetMouseButton(1) && !Input.GetMouseButton(2))
+				{
+					RestartGame();
+				}
+			}
+		}
+	}
+
+	public void GameOver()
+	{
+		state = GameState.EndScreen;
+		ShowReplayScreen ();
 	}
 
 	private void ShowStartScreen()
@@ -107,11 +122,9 @@ public class Game : MonoBehaviour
 		startScreenObject.SetActive(true);
 	}
 
-	private void HideReplayScreen()
+	private void RestartGame()
 	{
-		startScreenObject.SetActive(false);
-		StartCountDown(0.5f, false);
-		Audio.StopAudioSource( Audio.Instance.mainMenu, 3f);
+		Application.LoadLevel (Application.loadedLevel);
 	}
 
 	private void HideStartScreen()

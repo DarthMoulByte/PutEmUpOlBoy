@@ -81,6 +81,7 @@ public class FightingSkeleton : MonoBehaviour
         animator.SetTrigger("Death");
 		Audio.PlayAudioSource(Audio.Instance.skeletonDeath);
 		otherSkeleton.Victory();
+		Game.Instance.GameOver ();
 	}
 
 	private void Victory()
