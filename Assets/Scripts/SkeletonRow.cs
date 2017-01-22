@@ -23,28 +23,22 @@ public class SkeletonRow : MonoBehaviour
 
 		if (thisSkeleton == lastSkeleton + 1)
 		{
-			Debug.Log("1");
-			cheerFactor += Game.CheerUpAmount;
+			cheerFactor += Game.Instance.CheerUpAmount;
 		}
 		else if (thisSkeleton == 0 && lastSkeleton == 3)
 		{
-			Debug.Log("2");
-			cheerFactor += Game.CheerUpAmount;
+			cheerFactor += Game.Instance.CheerUpAmount;
 		}
 		else if(lastCheeringSkeleton == null)
 		{
-			Debug.Log("3");
-			cheerFactor += Game.CheerUpAmount;
+			cheerFactor += Game.Instance.CheerUpAmount;
 		}
 		else
 		{
-			Debug.Log("4");
-			cheerFactor += Game.CheerDownAmount;
+			cheerFactor += Game.Instance.CheerDownAmount;
 		}
 
 		lastCheeringSkeleton = skeleton;
-
-		Debug.Log(skeleton.name + " is cheering");
 	}
 
 	void Start()

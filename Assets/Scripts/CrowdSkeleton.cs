@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
@@ -21,6 +21,8 @@ public class CrowdSkeleton : MonoBehaviour
 
 	private SpriteRenderer iconRenderer;
 
+	private AudioSource cheerAudio;
+
 	public enum SkeletonState
 	{
 		Down = 0,
@@ -41,10 +43,14 @@ public class CrowdSkeleton : MonoBehaviour
 		animator.SetTrigger( "Idle" );
 		state = SkeletonState.Idle;
 		iconRenderer.sprite = keyIcon;
+
+		cheerAudio = Instantiate(Audio.Instance.skeletonCheer);
 	}
 
 	void Update()
 	{
+		if (!Game.Playing) return;
+
 		if (Input.GetKeyDown(key))
 		{
 			if (state == SkeletonState.Idle)
@@ -55,6 +61,7 @@ public class CrowdSkeleton : MonoBehaviour
 			else if (state == SkeletonState.Down)
 			{
 				animator.SetTrigger( "Jump" );
+				Audio.PlayAudioSource(cheerAudio);
 				state = SkeletonState.Idle;
 
 				row.Cheer( this );
