@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
@@ -23,6 +23,8 @@ public class CrowdSkeleton : MonoBehaviour
 
 	private AudioSource cheerAudio;
 
+	private ParticleSystem cheerSuccessfulParticleSystem;
+
 	public enum SkeletonState
 	{
 		Down = 0,
@@ -35,9 +37,10 @@ public class CrowdSkeleton : MonoBehaviour
 	void Start()
 	{
 		animator = GetComponentInChildren<Animator>();
+		cheerSuccessfulParticleSystem = GetComponentInChildren<ParticleSystem>();
 		row = GetComponentInParent<SkeletonRow>();
 		iconRenderer = transform.FindChild("PlayerActor").FindChild("ButtonIcon").GetComponent<SpriteRenderer> ();
-
+		 
 		startPosition = transform.position;
 
 		animator.SetTrigger( "Idle" );
