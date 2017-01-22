@@ -82,6 +82,7 @@ public class CrowdSkeleton : MonoBehaviour
 	public void SetCheerKey(KeyCode newKey, Sprite newKeyIcon)
 	{
 		key = newKey;
+		keyIcon = newKeyIcon;
 		iconRenderer.sprite = newKeyIcon;
 	}
 }
