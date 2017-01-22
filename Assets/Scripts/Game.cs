@@ -29,6 +29,8 @@ public class Game : MonoBehaviour
 
 	public GameObject startScreenObject;
 
+	public GameObject replayScreenObject;
+
 	public Timer timer;
 
 	public static float TimerMax = 15;
@@ -97,6 +99,19 @@ public class Game : MonoBehaviour
 	{
 		Audio.PlayAudioSource(Audio.Instance.mainMenu);
 		startScreenObject.SetActive(true);
+	}
+
+	private void ShowReplayScreen()
+	{
+		Audio.PlayAudioSource(Audio.Instance.mainMenu);
+		startScreenObject.SetActive(true);
+	}
+
+	private void HideReplayScreen()
+	{
+		startScreenObject.SetActive(false);
+		StartCountDown(0.5f, false);
+		Audio.StopAudioSource( Audio.Instance.mainMenu, 3f);
 	}
 
 	private void HideStartScreen()
