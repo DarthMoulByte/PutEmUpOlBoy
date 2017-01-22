@@ -102,14 +102,14 @@ public class Game : MonoBehaviour
 	private void HideStartScreen()
 	{
 		startScreenObject.SetActive(false);
-		StartCountDown(0.5f);
+		StartCountDown(0.5f, false);
 		Audio.StopAudioSource( Audio.Instance.mainMenu, 3f);
 	}
 
-	private static void StartCountDown(float delayBeforeCountdown = 0f)
+	private static void StartCountDown(float delayBeforeCountdown = 0f, bool randomizeKeys = true)
 	{
 		state = GameState.Countdown;
-		_instance.StartCoroutine(_instance.CountDown(delayBeforeCountdown));
+		_instance.StartCoroutine(_instance.CountDown(delayBeforeCountdown, randomizeKeys));
 		_instance.NewRound();
 	}
 
